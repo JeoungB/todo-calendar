@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo-Calendar</title>
+    <link rel="stylesheet" href="/css/reset.css"/>
+    <link rel="stylesheet" href="/css/main.css"/>
+    <link rel="stylesheet" href="/css/information.css"/>
+    <link rel="stylesheet" href="/css/memo.css"/>
+    <link rel="stylesheet" href="/css/calendar.css"/>
+</head>
+<body>
+    <h1>calendar</h1>
+    <div class="calendar_container">
+        <section class="information">information</section>
+        <section class="calendar">
+            <div id="calendar">
+                <h2>2024</h2>
+                <nav>
+                    <button id="prev"></button>
+                    <button id="next"></button>
+                </nav>
+                <ul class="days">
+                    <li>mon</li>
+                    <li>tue</li>
+                    <li>wed</li>
+                    <li>thu</li>
+                    <li>fri</li>
+                    <li>sun</li>
+                    <li>sat</li>
+                </ul>
+
+                <ul class="dates"></ul>
+            </div>
+            <section class="memo">memo</section>
+        </section>
+    </div>
+    <!-- defer : 페이지가 모두 로드된 후 외부 스크립트가 실행됨을 명시하는 속성 -->
+     <script src="/js/calendar.js" defer></script>
+</body>
+</html>

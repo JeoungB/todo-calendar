@@ -1,0 +1,121 @@
+
+.calendar {
+    width: 70%;
+    height: 100%;
+    position: relative;
+    z-index: 2;
+}
+
+.calendar #calendar {
+    width: calc(100% - 4rem);
+    height: calc(100% - 4rem);
+    position: relative;
+    padding: 2rem;
+    z-index: 3;
+    background-color: #fff;
+}
+
+#calendar nav {
+    width: 70%;
+    margin: 0 auto;
+    position: relative;
+    top: -4px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#calendar h2 {
+    text-align: center;
+    position: relative;
+    font-weight: 600;
+    font-size: 2rem;
+    top: 18px;
+    color: rgb(146, 27, 237);
+}
+
+#calendar ul {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+#calendar ul li {
+    width: calc(100%/7);
+    font-weight: 600;
+}
+
+#prev, #next {
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+    position: relative;
+    background: transparent;
+    border: none;
+}
+
+#prev::before, #next::before {
+    content: '';
+    width: 50%;
+    height: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-style: solid;
+    border-width: .25rem .25rem 0 0;
+    border-color: rgb(146, 27, 237);
+}
+
+#prev::before {
+    transform: translate(-50%, -50%) rotate(-135deg);
+}
+
+#prev:active::before,
+#next:active::before {
+    border-color: rgb(140, 3, 140);
+}
+
+#next::before {
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.days {
+    width: 100%;
+    height: 30px;
+    margin-top: 50px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(80, 80, 80, 0.225);
+    align-items: center;
+}
+
+.days li {
+    text-transform: uppercase;
+    color: rgb(3, 222, 149);
+}
+
+.dates li {
+    margin-top: 40px;
+    cursor: pointer;
+}
+
+.dates li.today {
+    color: white;
+    position: relative;
+}
+
+.dates li.today::before {
+    content: '';
+    width: 2.5rem;
+    height: 2.5rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 30px;
+    z-index: -1;
+    background-color: rgb(3, 222, 149);
+}
+
+.dates li.inactive {
+    color: gray;
+}
