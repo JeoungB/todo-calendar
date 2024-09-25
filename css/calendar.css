@@ -1,4 +1,8 @@
 
+:root {
+    --dateBorderColor : transparent;
+}
+
 .calendar {
     width: 70%;
     height: 100%;
@@ -13,6 +17,8 @@
     padding: 2rem;
     z-index: 3;
     background-color: #fff;
+    transition: all 1s ease-in-out;
+    transform: translateX(-240px);
 }
 
 #calendar nav {
@@ -94,16 +100,13 @@
 }
 
 .dates li {
+    display: inline-block;
     margin-top: 40px;
     cursor: pointer;
-}
-
-.dates li.today {
-    color: white;
     position: relative;
 }
 
-.dates li.today::before {
+.dates li::before {
     content: '';
     width: 2.5rem;
     height: 2.5rem;
@@ -113,6 +116,20 @@
     transform: translate(-50%, -50%);
     border-radius: 30px;
     z-index: -1;
+    border-style: solid;
+    border-width: .1rem;
+    border-color: var(--dateBorderColor);
+}
+
+.dates li:hover::before {
+    background-color: rgba(222, 217, 217, 0.5);
+}
+
+.dates li.today {
+    color: white;
+}
+
+.dates li.today::before {
     background-color: rgb(3, 222, 149);
 }
 

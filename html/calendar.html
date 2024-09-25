@@ -1,19 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Todo-Calendar</title>
-    <link rel="stylesheet" href="/css/reset.css"/>
-    <link rel="stylesheet" href="/css/main.css"/>
-    <link rel="stylesheet" href="/css/information.css"/>
-    <link rel="stylesheet" href="/css/memo.css"/>
-    <link rel="stylesheet" href="/css/calendar.css"/>
+    <link rel="stylesheet" href="/css/reset.css" />
+    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="/css/information.css" />
+    <link rel="stylesheet" href="/css/memo.css" />
+    <link rel="stylesheet" href="/css/calendar.css" />
 </head>
-<body>
+
+<body class="body">
     <h1>calendar</h1>
     <div class="calendar_container">
-        <section class="information">information</section>
+        <section class="information">
+            <div class="weather">
+                <div id="img"></div>
+                <div id="temp"></div>
+            </div>
+            <h3>일정이 없어요..</h3>
+            <div class="todo">
+                <button class=add_todo>add todo</button>
+            </div>
+        </section>
         <section class="calendar">
             <div id="calendar">
                 <h2>2024</h2>
@@ -33,10 +44,18 @@
 
                 <ul class="dates"></ul>
             </div>
-            <section class="memo">memo</section>
+            <section class="memo">
+                <p class="day"></p>
+                <input type="text" placeholder="할일 추가" />
+            </section>
         </section>
     </div>
     <!-- defer : 페이지가 모두 로드된 후 외부 스크립트가 실행됨을 명시하는 속성 -->
-     <script src="/js/calendar.js" defer></script>
+    <script src="/js/calendar.js" defer></script>
+    <!-- html에선 npm패키지를 import 할 수 없기에 script로 연결  -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js" defer></script>
+    <script type="module" src="/js/weather.js" defer></script>
+    <script type="module" src="/js/information.js" defer></script>
 </body>
+
 </html>
