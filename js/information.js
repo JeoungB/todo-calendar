@@ -8,7 +8,7 @@ function renderList() {
 }
 
 addBtn.addEventListener('click', (e) => {
-    // calendar.style.transform = 'translateX(-43%)';
+    //calendar.style.transform = 'translateX(-43%)';
 })
 
 renderList();

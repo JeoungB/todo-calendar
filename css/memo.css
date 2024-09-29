@@ -6,10 +6,15 @@
     height: 100%;
     background: rgb(255, 255, 255);
     z-index: 1;
+    border-left: 1px solid rgba(161, 161, 161, 0.664);
 }
 
 .memo .day {
     text-align: center;
     font-weight: 600;
     color: rgb(0, 0, 0);
+}
+
+.memo input {
+    
 }
