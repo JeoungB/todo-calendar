@@ -50,7 +50,7 @@ function renderCalendar() {
 
   dates.innerHTML = datesHtml;
   header.textContent = `${months[month]} ${year}`;
-  memoDay.innerHTML = `<h3>${year+'.'+(month+1)+'.'+date.getDate()}</h3>`
+  memoDay.innerHTML = `<h3>${year+"-"+(month+1)+"-"+date.getDate()}</h3>`
 
   const dateList = document.querySelectorAll('.dates li');
 

@@ -46,7 +46,14 @@
             </div>
             <section class="memo">
                 <p class="day"></p>
-                <input type="text" placeholder="할일 추가" />
+                <ul class="list"></ul>
+                <form>
+                    <input type="text" placeholder="할일 추가" />
+                    <div class="buttons">
+                        <button type="button" id="submit">제출</button>
+                        <button type="button" id="cancel">취소</button>
+                    </div>
+                </form>
             </section>
         </section>
     </div>
@@ -56,6 +63,7 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js" defer></script>
     <script type="module" src="/js/weather.js" defer></script>
     <script type="module" src="/js/information.js" defer></script>
+    <script type="module" src="/js/memo.js" defer></script>
 </body>
 
 </html>

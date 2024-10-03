@@ -18,7 +18,9 @@
     z-index: 3;
     background-color: #fff;
     transition: all 1s ease-in-out;
+    /* js */
     transform: translateX(-240px);
+    border-right: 1px solid rgba(168, 168, 168, 0.459);
 }
 
 #calendar nav {
