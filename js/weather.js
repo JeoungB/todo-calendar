@@ -18,6 +18,6 @@ async function getWeather() {
     } catch (error) {
         console.log("날씨 정보 가져오기 실패", error);
     }
-}
+};
 
 getWeather();
