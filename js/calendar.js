@@ -60,7 +60,7 @@ function renderCalendar() {
         dateList[i].style.setProperty('--dateBorderColor', 'transparent');
       }
       date.style.setProperty('--dateBorderColor', 'rgb(3, 222, 149)');
-      memoDay.innerHTML = `<h3>${year+'.'+(month+1)+'.'+e.target.textContent}</h3>`
+      memoDay.innerHTML = `<h3>${year+'-'+(month+1)+'-'+e.target.textContent}</h3>`
     })
   });
 };
