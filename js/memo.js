@@ -3,14 +3,29 @@ const input = document.querySelector(".memo form input");
 const submitBtn = document.querySelector(".memo .buttons #submit");
 const closeBtn = document.querySelector(".memo .buttons #cancel");
 const memoDay = document.querySelector(".memo .day");
-const dateList = document.querySelectorAll('.dates li');
-const calendar = document.querySelector('#calendar');
-const h3 = document.querySelector('.information h3');
-const todayTodos = document.querySelector('.information .todo');
+const calendar = document.querySelector("#calendar");
+const h3 = document.querySelector(".information h3");
+const todayTodos = document.querySelector(".information .todo");
+const navs = document.querySelectorAll("#prev, #next");
+let dateList = document.querySelectorAll(".dates li");
+
+// 이제 넘친 텍스트 확인을 위해서 텍스트 모달창을 만들어보자.
 
 let day = memoDay.textContent.replace(/-/g, "");
-
 let todos = [];
+
+let date = new Date();
+let hours = ("0" + date.getHours()).slice(-2);
+let minutes = ("0" + date.getMinutes()).slice(-2);
+let timeString = hours + ":" + minutes;
+
+const changeDateList = () => {
+  dateList = document.querySelectorAll(".dates li");
+
+  dateList.forEach((date) => {
+    date.addEventListener("click", clickDate);
+  });
+};
 
 const save = () => {
   localStorage.setItem("todos", JSON.stringify(todos));
@@ -23,29 +38,28 @@ const delItem = (e) => {
   target.remove();
 
   // todayTodos의 li 중 target.id 와 같은 id를 가진 li를 찾아서 삭제.
-  // 삭제 후 todayTodosList에 li 자식이 없다면 "일정없음" 표시.
-  const todayTodosList = document.querySelectorAll('.information .todo li');
-  if(todayTodosList.length !== 0) {
-    todayTodosList.forEach(list => {
-      if(parseInt(list.id) === parseInt(target.id)) {
+  const todayTodosList = document.querySelectorAll(".information .todo li");
+  if (todayTodosList.length !== 0) {
+    todayTodosList.forEach((list) => {
+      if (parseInt(list.id) === parseInt(target.id)) {
         list.remove();
-      };
+      }
     });
-  };
+  }
 };
 
 const addItem = (todo) => {
-
-  if(todo.day === day) {
+  if (todo.day === day) {
+    const div = document.createElement("div");
     const li = document.createElement("li");
     const button = document.createElement("button");
     const span = document.createElement("span");
-  
+
     span.innerText = todo.memo;
+    div.setAttribute("class", "point");
     button.setAttribute("type", "button");
-    button.innerText = "삭제";
     button.addEventListener("click", delItem);
-    li.append(span, button);
+    li.append(div, span, button);
     lists.appendChild(li);
     li.id = todo.id;
   }
@@ -54,15 +68,24 @@ const addItem = (todo) => {
 };
 
 const addInformation = (todo) => {
-  if(todo.day === day) {
+  if (todo.day === day) {
     const li = document.createElement("li");
     const span = document.createElement("span");
-    
+    const div = document.createElement('div');
+
+    div.setAttribute('class', 'time');
+    div.innerText = todo.time;
     h3.innerText = "";
     span.innerText = todo.memo;
-    li.append(span);
+    li.append(div, span);
     todayTodos.appendChild(li);
     li.id = todo.id;
+  }
+
+  // todayTodos에 암것도 없으면 일정 없다.
+  const todayTodosList = document.querySelectorAll(".information .todo li");
+  if (todayTodosList.length === 0) {
+    h3.innerText = "일정이 없어요...";
   }
 };
 
@@ -71,6 +94,7 @@ const handle = (e) => {
     id: Date.now(),
     memo: input.value,
     day: day,
+    time: timeString,
   };
   if (todo.memo !== "") {
     todos.push(todo);
@@ -97,7 +121,7 @@ const enterkey = (event) => {
 };
 
 const clickDate = () => {
-  day = memoDay.textContent.replace(/-/g, '');
+  day = memoDay.textContent.replace(/-/g, "");
   const saveTodos = JSON.parse(localStorage.getItem("todos"));
   lists.replaceChildren();
   todayTodos.replaceChildren();
@@ -109,18 +133,22 @@ const clickDate = () => {
 };
 
 const closeCalender = () => {
-  const todayTodosList = document.querySelectorAll('.information .todo li');
-  if(todayTodosList.length === 0) {
+  const todayTodosList = document.querySelectorAll(".information .todo li");
+  if (todayTodosList.length === 0) {
     h3.innerText = "일정이 없어요...";
-  };
-  calendar.style.transform = 'translateX(0%)';
-}
+  }
+  calendar.style.transform = "translateX(0%)";
+};
 
 init();
 input.addEventListener("keydown", enterkey);
 submitBtn.addEventListener("click", handle);
 closeBtn.addEventListener("click", closeCalender);
-dateList.forEach(date => {
-  date.addEventListener('click', clickDate);
-})
-
+// dateList가 월이 넘어가도 이전의 date들만 가지고 있기때문에
+// 월이 넘어갈 때 마다 새로 dateList를 받아와줘야 함.
+navs.forEach((nav) => {
+  nav.addEventListener("click", changeDateList);
+});
+dateList.forEach((date) => {
+  date.addEventListener("click", clickDate);
+});

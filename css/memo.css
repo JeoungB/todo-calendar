@@ -4,7 +4,7 @@
     right: 0;
     width: 36%;
     height: 100%;
-    background: transparent
+    background: transparent;
     z-index: 1;
     padding: 1rem;
 }
@@ -59,11 +59,66 @@
     position: relative;
     width: 100%;
     height: 300px;
-    background-color: aqua;
+    overflow-y: scroll;
 }
 
 .memo .list li {
     width: 100%;
     height: 30px;
-    background-color: red;
+    display: flex;
+    align-items: center;
+    margin: 5px 0 5px 0;
+}
+
+.memo .list li:hover {
+    background-color: rgba(214, 214, 214, 0.716);
+    border-radius: 5px;
+}
+.memo .list li:hover button {
+    display: block;
+}
+
+.memo .list .point {
+    width: 10px;
+    height: 10px;
+    background-color: rgb(0, 0, 0);
+    border-radius: 10px;
+    margin-left: 10px;
+}
+
+.memo .list li span {
+    position: relative;
+    width: 70%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding-left: 5px;
+}
+
+.memo .list li button {
+    position: relative;
+    background-color: transparent;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    display: none;
+}
+
+.memo .list li button::before {
+    content: 'X';
+    position: absolute;
+    transform: translate(-50%, -50%);
+    display: block;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.memo .list li button:hover::before {
+    background-color: rgba(183, 183, 183, 0.634);
 }
