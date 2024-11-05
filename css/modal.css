@@ -1,0 +1,86 @@
+:root {
+    --modal--height : 100px;
+}
+
+#modal_container {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: transparent;
+    z-index: 10;
+}
+
+.modal {
+    width: 500px;
+    height: var(--modal--height);
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(133, 127, 127, 0.589);
+    border-radius: 5px;
+    border: 3px solid black;
+    backdrop-filter: blur(10px);
+}
+
+.modal input {
+    border: none;
+    background-color: rgb(255, 255, 255);
+    position: relative;
+    top: 0;
+    left: 0;
+    width: calc(100% - 5px);
+    height: 50px;
+    overflow: hidden;
+    border-radius: 5px 5px 0 0;
+    border-style: none;
+}
+
+.modal #modify, #check {
+    width: 4rem;
+    height: 2rem;
+    position: relative;
+    top: 10px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    cursor: pointer;
+}
+
+.modal #modify::after {
+    content: '수정';
+}
+
+.modal #check::after {
+    content: '확인';
+}
+
+.modal #closeBtn {
+    width: 3rem;
+    height: 3rem;
+    position: absolute;
+    top: -50px;
+    right: 0;
+    background-color: transparent;
+    border: none;
+}
+
+.modal #closeBtn::after {
+    content: 'X';
+    font-size: 2rem;
+    line-height: 45px;
+    color: rgba(146, 145, 145, 0.685);
+    width: 45px;
+    height: 45px;
+    border-radius: 50px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+}
+
+.modal #closeBtn:hover::after {
+    background-color: rgba(155, 149, 149, 0.281);
+}
